@@ -1,0 +1,214 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="page">
+      <div class="introduction">
+        <p class="heading_line">
+          Ronny Wieckardt &mdash; Digital Designer &mdash; RTM | NL
+        </p>
+      </div>
+      <section class="hero">
+        <div class="hero-background"></div>
+
+        <div class="hero-logo">
+          <div class="circle">
+            <img class="mascot-img" src="/assets/mascot.svg" alt="" />
+          </div>
+          <img
+            class="logo-img-placeholder"
+            src="/assets/logo_letter_01.svg"
+            alt=""
+          />
+          <img class="logo-img" src="/assets/logo_letter_01.svg" alt="" />
+          <img class="logo-img" src="/assets/logo_letter_02.svg" alt="" />
+          <img class="logo-img" src="/assets/logo_letter_03.svg" alt="" />
+          <img class="logo-img" src="/assets/logo_letter_04.svg" alt="" />
+        </div>
+      </section>
+      <section class="section-two">
+        <div class="grid-layout">
+          <div class="column">
+            <p>
+              Een ervaren* digital designer uit Rotterdam. Gespecialiseerd in
+              het maken van gebruiksvriendelijke digitale producten en diensten
+              van begin tot eind.
+            </p>
+          </div>
+          <div class="column">
+            <p>
+              Mijn expertise omvat strategie, conceptontwerp, prototyping,
+              stakeholder management en co-creatie. Ik benader alle projecten
+              vanuit het eindgebruikers perspectief.
+            </p>
+          </div>
+          <div class="column">
+            <p>
+              Zo maak ik op enthousiaste wijze, overtuigende digitale producten
+              waar mensen blij van worden en bedrijven op kunnen bouwen.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+
+  <style>
+    :root {
+      --brand--primary: #151718;
+      --brand--secondary: #f2f2f0;
+      --brand--alt: #808277;
+      --body: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+        "DejaVu Sans Mono", monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --brand--primary: #808277;
+        --brand--secondary: #151718;
+        --brand--alt: #f2f2f0;
+        --body: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+          Consolas, "DejaVu Sans Mono", monospace;
+        --copy: Bahnschrift, "DIN Alternate", "Franklin Gothic Medium",
+          "Nimbus Sans Narrow", sans-serif-condensed, sans-serif;
+      }
+    }
+
+    body {
+      background-color: var(--brand--primary);
+      color: var(--brand--secondary);
+      font-family: var(--body);
+      font-weight: normal;
+      font-size: 1rem;
+      letter-spacing: 0.0125em;
+      min-height: 400vh;
+    }
+    .introduction {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding: 2rem 4rem;
+    }
+    .page {
+    }
+
+    .grid-layout {
+      width: 100%;
+      display: flex;
+      gap: 4rem;
+      flex-grow: 1;
+      padding: 2rem 4rem;
+      font-family: var(--copy);
+      letter-spacing: -0.0125em;
+      font-size: 1.2rem;
+      line-height: 112%;
+      text-wrap: balance;
+    }
+    .column {
+      width: 100%;
+      border-top: 3px solid var(--brand--secondary);
+      padding-top: 2rem;
+    }
+
+    .hero {
+      z-index: 1;
+
+      flex-flow: column;
+      align-items: center;
+      width: 100%;
+      padding: 4rem;
+      display: flex;
+      position: relative;
+    }
+    .circle {
+      position: fixed;
+      z-index: 2;
+      top: -64px;
+      left: -64px;
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-img-placeholder {
+      opacity: 0;
+    }
+
+    .logo-img {
+      position: absolute;
+      top: 0%;
+      bottom: 0%;
+      left: 0%;
+      right: 0%;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      display: inline-block;
+    }
+  </style>
+
+  <script>
+    //@ts-nocheck
+    import { gsap } from "gsap";
+
+    let loadTl = gsap.timeline({
+      onStart: function () {
+        document.body.style.cursor = "progress";
+        setTimeout(function () {
+          document.body.style.cursor = "auto";
+        }, 1000);
+      },
+    });
+
+    loadTl.from(
+      ".logo-img",
+      {
+        y: "100%",
+        duration: 1.4,
+        stagger: { each: 0.04 },
+        ease: "expo.inOut",
+      },
+      0
+    );
+
+    const circle = document.querySelector(".circle");
+    const box = document.querySelector(".hero-logo");
+
+    gsap.set(circle, {
+      xPercent: 64,
+      yPercent: 64,
+    });
+
+    box.addEventListener("mousemove", moveCircle);
+    box.addEventListener("mouseleave", resetCircle);
+
+    function moveCircle(e) {
+      gsap.to(circle, 0.3, {
+        x: e.clientX,
+        y: e.clientY,
+      });
+    }
+
+    function resetCircle(e) {
+      gsap.to(circle, 0.3, {
+        x: -64,
+        y: -64,
+      });
+    }
+  </script>
+</html>
