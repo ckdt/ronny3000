@@ -1,0 +1,81 @@
+@use "utopia.scss";
+
+/*---------------------*/
+/* GLOBAL STYLES       */
+/*---------------------*/
+/* Utopia Type */
+/*
+var(--fs--2);
+var(--fs--1);
+var(--fs-0);
+var(--fs-1);
+var(--fs-2);
+var(--fs-3);
+var(--fs-4);
+var(--fs-5);
+*/
+/* Utopia Scale */
+/*
+var(--space-3xs);
+var(--space-2xs);
+var(--space-xs);
+var(--space-s);
+var(--space-m);
+var(--space-l);
+var(--space-xl);
+var(--space-2xl);
+var(--space-3xl);
+*/
+
+:root {
+  --brand--primary: #151718;
+  --brand--secondary: #f2f2f0;
+  --brand--alt: #808277;
+  --mono: 'Nimbus Mono PS', 'Courier New', monospace;
+  --body:  Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+}
+
+*,
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--brand--primary);
+  color: var(--brand--secondary);
+  font-family: var(--body);
+  font-weight: normal;
+  font-size: 1rem;
+  letter-spacing: 0.0125em;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

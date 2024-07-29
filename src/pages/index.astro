@@ -1,214 +1,219 @@
 ---
-
+import { Image } from "astro:assets";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import profileRonny from "../assets/ronny.jpeg";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <div class="page">
-      <div class="introduction">
-        <p class="heading_line">
-          Ronny Wieckardt &mdash; Digital Designer &mdash; RTM | NL
+<DefaultLayout title="Ronny Wieckardt — Digital Designer — Rotterdam | NL">
+  <header class="header">
+    <h1 class="headline">
+      Ronny Wieckardt &mdash; Digital Designer &mdash; Rotterdam
+    </h1>
+  </header>
+
+  <section class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-brand">
+      <div class="brand-mascot">
+        <img class="mascot-img" src="/assets/mascot.svg" alt="" />
+      </div>
+      <div class="brand-logo">
+        <img
+          class="logo-img-placeholder"
+          src="/assets/logo_letter_01.svg"
+          alt=""
+        />
+        <img class="logo-img" src="/assets/logo_letter_01.svg" alt="" />
+        <img class="logo-img" src="/assets/logo_letter_02.svg" alt="" />
+        <img class="logo-img" src="/assets/logo_letter_03.svg" alt="" />
+        <img class="logo-img" src="/assets/logo_letter_04.svg" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="cb-text-grid">
+      <div class="grid-column">
+        <p>
+          Een ervaren* digital designer uit Rotterdam. Gespecialiseerd in het
+          maken van gebruiksvriendelijke digitale producten en diensten van
+          begin tot eind.
         </p>
       </div>
-      <section class="hero">
-        <div class="hero-background"></div>
-
-        <div class="hero-logo">
-          <div class="circle">
-            <img class="mascot-img" src="/assets/mascot.svg" alt="" />
-          </div>
-          <img
-            class="logo-img-placeholder"
-            src="/assets/logo_letter_01.svg"
-            alt=""
-          />
-          <img class="logo-img" src="/assets/logo_letter_01.svg" alt="" />
-          <img class="logo-img" src="/assets/logo_letter_02.svg" alt="" />
-          <img class="logo-img" src="/assets/logo_letter_03.svg" alt="" />
-          <img class="logo-img" src="/assets/logo_letter_04.svg" alt="" />
-        </div>
-      </section>
-      <section class="section-two">
-        <div class="grid-layout">
-          <div class="column">
-            <p>
-              Een ervaren* digital designer uit Rotterdam. Gespecialiseerd in
-              het maken van gebruiksvriendelijke digitale producten en diensten
-              van begin tot eind.
-            </p>
-          </div>
-          <div class="column">
-            <p>
-              Mijn expertise omvat strategie, conceptontwerp, prototyping,
-              stakeholder management en co-creatie. Ik benader alle projecten
-              vanuit het eindgebruikers perspectief.
-            </p>
-          </div>
-          <div class="column">
-            <p>
-              Zo maak ik op enthousiaste wijze, overtuigende digitale producten
-              waar mensen blij van worden en bedrijven op kunnen bouwen.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div class="grid-column">
+        <p>
+          Mijn expertise omvat strategie, conceptontwerp, prototyping,
+          stakeholder management en co-creatie. Ik benader alle projecten vanuit
+          het eindgebruikers perspectief.
+        </p>
+      </div>
+      <div class="grid-column">
+        <p>
+          Zo maak ik op enthousiaste wijze, overtuigende digitale producten waar
+          mensen blij van worden en bedrijven op kunnen bouwen.
+        </p>
+      </div>
     </div>
-  </body>
 
-  <style>
-    :root {
-      --brand--primary: #151718;
-      --brand--secondary: #f2f2f0;
-      --brand--alt: #808277;
-      --body: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
-        "DejaVu Sans Mono", monospace;
-    }
+    <Image
+      class="profile-image"
+      src={profileRonny}
+      widths={[240, 540, 720, profileRonny.width]}
+      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${profileRonny.width}px`}
+      alt="A Picture of Ronny Wieckardt, sitting on the balcony of his office space at Het Industriegebouw Rotterdam"
+    />
+  </section>
+</DefaultLayout>
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --brand--primary: #808277;
-        --brand--secondary: #151718;
-        --brand--alt: #f2f2f0;
-        --body: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
-          Consolas, "DejaVu Sans Mono", monospace;
-        --copy: Bahnschrift, "DIN Alternate", "Franklin Gothic Medium",
-          "Nimbus Sans Narrow", sans-serif-condensed, sans-serif;
-      }
-    }
+<style>
+  .header {
+    padding: 2rem 4rem;
+  }
+  .headline {
+    font-size: var(--fs--2);
+    font-family: var(--mono);
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  .hero {
+    z-index: 1;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 4rem 4rem 4rem;
+    display: flex;
+    position: relative;
+  }
+  .hero-brand {
+    width: 100%;
+  }
+  .brand-mascot {
+    position: fixed;
+    z-index: 2;
+    top: -64px;
+    left: -64px;
+    pointer-events: none;
+  }
+  .brand-logo {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-    body {
-      background-color: var(--brand--primary);
-      color: var(--brand--secondary);
-      font-family: var(--body);
-      font-weight: normal;
-      font-size: 1rem;
-      letter-spacing: 0.0125em;
-      min-height: 400vh;
-    }
-    .introduction {
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      padding: 2rem 4rem;
-    }
-    .page {
-    }
+  .logo-img-placeholder {
+    opacity: 0;
+  }
 
-    .grid-layout {
-      width: 100%;
+  .logo-img {
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+  }
+  .about {
+    display: flex;
+    flex-direction: column;
+  }
+  .cb-text-grid {
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .grid-column {
+    width: 100%;
+  }
+  .grid-column p {
+    padding: 0 0 1rem 0;
+    font-size: var(--fs--1);
+    text-wrap: balance;
+  }
+  .profile-image {
+    aspect-ratio: 2/3;
+    padding-top: 1rem;
+    max-width: 100%;
+  }
+
+  @media (width >= 1000px) {
+    .about {
       display: flex;
-      gap: 4rem;
-      flex-grow: 1;
-      padding: 2rem 4rem;
-      font-family: var(--copy);
-      letter-spacing: -0.0125em;
-      font-size: 1.2rem;
-      line-height: 112%;
-      text-wrap: balance;
+      flex-direction: row;
     }
-    .column {
-      width: 100%;
-      border-top: 3px solid var(--brand--secondary);
-      padding-top: 2rem;
+    .cb-text-grid {
+      gap: 2rem;
+      flex-direction: row;
     }
+    .grid-column {
+      padding: 2rem 0;
+      border-top: 2px solid var(--brand--secondary);
+    }
+    .profile-image {
+      padding-top: 0;
+      max-width: 40vw;
+    }
+  }
+</style>
 
-    .hero {
-      z-index: 1;
+<script>
+  //@ts-nocheck
+  import { gsap } from "gsap";
+  import Lenis from "lenis";
 
-      flex-flow: column;
-      align-items: center;
-      width: 100%;
-      padding: 4rem;
-      display: flex;
-      position: relative;
-    }
-    .circle {
-      position: fixed;
-      z-index: 2;
-      top: -64px;
-      left: -64px;
-      pointer-events: none;
-    }
+  let loadTl = gsap.timeline({
+    onStart: function () {
+      document.body.style.cursor = "progress";
+      setTimeout(function () {
+        document.body.style.cursor = "auto";
+      }, 1000);
+    },
+  });
 
-    .hero-logo {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    .logo-img-placeholder {
-      opacity: 0;
-    }
+  loadTl.from(
+    ".logo-img",
+    {
+      y: "100%",
+      duration: 1.4,
+      stagger: { each: 0.04 },
+      ease: "expo.inOut",
+    },
+    0
+  );
 
-    .logo-img {
-      position: absolute;
-      top: 0%;
-      bottom: 0%;
-      left: 0%;
-      right: 0%;
-    }
+  const circle = document.querySelector(".brand-mascot");
+  const box = document.querySelector(".brand-logo");
 
-    img {
-      object-fit: cover;
-      width: 100%;
-      max-width: 100%;
-      height: 100%;
-      display: inline-block;
-    }
-  </style>
+  gsap.set(circle, {
+    xPercent: 64,
+    yPercent: 64,
+  });
 
-  <script>
-    //@ts-nocheck
-    import { gsap } from "gsap";
+  box.addEventListener("mousemove", moveCircle);
+  box.addEventListener("mouseleave", resetCircle);
 
-    let loadTl = gsap.timeline({
-      onStart: function () {
-        document.body.style.cursor = "progress";
-        setTimeout(function () {
-          document.body.style.cursor = "auto";
-        }, 1000);
-      },
+  function moveCircle(e) {
+    gsap.to(circle, 0.3, {
+      x: e.clientX,
+      y: e.clientY,
     });
+  }
 
-    loadTl.from(
-      ".logo-img",
-      {
-        y: "100%",
-        duration: 1.4,
-        stagger: { each: 0.04 },
-        ease: "expo.inOut",
-      },
-      0
-    );
-
-    const circle = document.querySelector(".circle");
-    const box = document.querySelector(".hero-logo");
-
-    gsap.set(circle, {
-      xPercent: 64,
-      yPercent: 64,
+  function resetCircle(e) {
+    gsap.to(circle, 0.3, {
+      x: -64,
+      y: -64,
     });
+  }
 
-    box.addEventListener("mousemove", moveCircle);
-    box.addEventListener("mouseleave", resetCircle);
+  const lenis = new Lenis();
 
-    function moveCircle(e) {
-      gsap.to(circle, 0.3, {
-        x: e.clientX,
-        y: e.clientY,
-      });
-    }
+  lenis.on("scroll", (e) => {
+    console.log(e);
+  });
 
-    function resetCircle(e) {
-      gsap.to(circle, 0.3, {
-        x: -64,
-        y: -64,
-      });
-    }
-  </script>
-</html>
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>

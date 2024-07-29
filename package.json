@@ -13,7 +13,10 @@
     "@astrojs/check": "^0.8.3",
     "astro": "^4.12.2",
     "gsap": "^3.12.5",
+    "lenis": "^1.1.8",
+    "sass": "^1.77.8",
     "split-type": "^0.3.4",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "utopia-core-scss": "^1.1.0"
   }
 }
