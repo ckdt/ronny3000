@@ -32,40 +32,73 @@ import profileRonny from "../assets/ronny.jpeg";
   </section>
 
   <section class="about">
-    <div class="cb-text-grid">
-      <div class="grid-column">
-        <p>
-          Een ervaren* digital designer uit Rotterdam. Gespecialiseerd in het
-          maken van gebruiksvriendelijke digitale producten en diensten van
-          begin tot eind.
-        </p>
+    <div class="column">
+      <div class="cb-text-grid">
+        <div class="grid-column">
+          <p>
+            Een ervaren* digital designer uit Rotterdam. Gespecialiseerd in het
+            maken van gebruiksvriendelijke digitale producten en diensten van
+            begin tot eind.
+          </p>
+        </div>
+        <div class="grid-column">
+          <p>
+            Mijn expertise omvat strategie, conceptontwerp, prototyping,
+            stakeholder management en co-creatie. Ik benader alle projecten
+            vanuit het eindgebruikers perspectief.
+          </p>
+        </div>
+        <div class="grid-column">
+          <p>
+            Zo maak ik op enthousiaste wijze, overtuigende digitale producten
+            waar mensen blij van worden en bedrijven op kunnen bouwen.
+          </p>
+        </div>
       </div>
-      <div class="grid-column">
-        <p>
-          Mijn expertise omvat strategie, conceptontwerp, prototyping,
-          stakeholder management en co-creatie. Ik benader alle projecten vanuit
-          het eindgebruikers perspectief.
-        </p>
-      </div>
-      <div class="grid-column">
-        <p>
-          Zo maak ik op enthousiaste wijze, overtuigende digitale producten waar
-          mensen blij van worden en bedrijven op kunnen bouwen.
-        </p>
+
+      <div class="cb-call-to-action">
+        <a
+          href="mailto:hi@ronny.digital?subject=Projectaanvraag"
+          class="box__link button-animation"
+          href="#"
+        >
+          Neem contact op
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
       </div>
     </div>
-
-    <Image
-      class="profile-image"
-      src={profileRonny}
-      widths={[240, 540, 720, profileRonny.width]}
-      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${profileRonny.width}px`}
-      alt="A Picture of Ronny Wieckardt, sitting on the balcony of his office space at Het Industriegebouw Rotterdam"
-    />
+    <div class="column">
+      <Image
+        class="profile-image"
+        src={profileRonny}
+        widths={[240, 540, 720, profileRonny.width]}
+        sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${profileRonny.width}px`}
+        alt="A Picture of Ronny Wieckardt, sitting on the balcony of his office space at Het Industriegebouw Rotterdam"
+      />
+    </div>
   </section>
+  <footer class="footer">
+    <p class="legal">
+      Ronny&trade; Goudsesingel 136, 3011KD Rotterdam &bull; KVK: 51217805
+      &bull; BTW: 173837839B02 &bull;
+      <a
+        href="/assets/ronny_algemene_voorwaarden.pdf"
+        title="Algemene Voorwaarden ronny.digital">Algemene Voorwaarden</a
+      >
+    </p>
+  </footer>
 </DefaultLayout>
 
 <style>
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
   .header {
     padding: 2rem 4rem;
   }
@@ -120,6 +153,9 @@ import profileRonny from "../assets/ronny.jpeg";
     display: flex;
     flex-direction: column;
   }
+  .cb-call-to-action {
+    padding: 0 4rem;
+  }
   .grid-column {
     width: 100%;
   }
@@ -151,6 +187,152 @@ import profileRonny from "../assets/ronny.jpeg";
       padding-top: 0;
       max-width: 40vw;
     }
+    .column {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .footer {
+    padding: 4rem;
+    font-size: var(--fs--2);
+    font-family: var(--mono);
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: var(--brand--secondary);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: dashed;
+  }
+
+  /* SUPER BUTTON */
+
+  :root {
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --body-color: #393937;
+    --accent-color: #f54321;
+    --white-color: #fff;
+    --box-shadow: 0 0 2px #f54321, 0 0 10px #f54321, 0 0 15px #f54321,
+      0 0 20px #f54321;
+  }
+
+  /*=============== BASE ===============*/
+
+  body {
+    background: var(--body-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .button-animation {
+    position: relative;
+    display: inline-block;
+    padding: 20px 30px;
+    color: var(--accent-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+  }
+  .button-animation span {
+    position: absolute;
+    display: block;
+  }
+  .button-animation span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color));
+    animation: btn-anim1 1s linear infinite;
+  }
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+  .button-animation span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--accent-color));
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+  .button-animation span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, var(--accent-color));
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,
+    100% {
+      right: 100%;
+    }
+  }
+  .button-animation span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, var(--accent-color));
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,
+    100% {
+      bottom: 100%;
+    }
+  }
+  .button-animation:hover {
+    background-color: var(--accent-color);
+    color: var(--white--accent);
+    border-radius: 2px;
+    box-shadow: var(--box-shadow);
   }
 </style>
 
